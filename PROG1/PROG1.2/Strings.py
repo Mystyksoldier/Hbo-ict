@@ -16,7 +16,7 @@ print("De hoeveelheid nummers in het woord", word1, "is:", answer_1)
 print()
 
 print("Vraag 2:")
-if word_filter_question_2 in word1 :
+if word_filter_question_2 in word1:
     print(word_filter_question_2, "komt in de tekst voor.")
 else :
     print(word_filter_question_2, "komt niet in de tekst voor.")
