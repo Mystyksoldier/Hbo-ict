@@ -1,5 +1,5 @@
-i = 0
-while '8' not in str(i):
-    i += 7
+studenten = {1: 'Jorg', 2: 'Gabe', 3: 'Thomas', 4: 'Daan' }
+studenten[7] = 'Eiad'
+studenten[1] = 'Abdessatar'
 
-print(i)
+print(len(studenten))

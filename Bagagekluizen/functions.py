@@ -43,19 +43,56 @@ def kluis_openen():
         lockers.append((split_values[0], split_values[1]))
 
     input_locker_number = input("welk kluis nummer heb je? ")
+    
+    found = False
 
     for locker in lockers:
         if locker[0] == input_locker_number:
-            return (f"Kluis {input_locker_number} is niet in gebruik.")
-            #password = input(f"Geef het wachtwoord voor kluis {input_locker_number}: ")
-        return ("yes")
+            found = True
+            break
     
+    if not found:
+        return (f"Kluis {input_locker_number} is niet in gebruik.")
+    else:
+        locker_code = input("Voer de code in: ")
 
+    for locker in lockers:
+        if locker[0] == input_locker_number and locker[1] == locker_code:
+            if locker[1] == locker_code:
+                True
+            else:
+                False
 
-    #for i in range(len(lockers)):
-    #    lockers[i] = lockers[i].split(";")
-    #    return (f"{lockers[i][0]}")
+def kluis_teruggeven():
+    with open('kluizen.txt', 'r') as file:
+        in_use = file.readlines()
+    lockers = []
+    for locker in in_use:
+        split_values = locker.strip().split(";")
+        lockers.append((split_values[0], split_values[1]))
+    input_locker_number = input("welk kluis nummer heb je? ")
+    found = False
+    for locker in lockers:
+        if locker[0] == input_locker_number:
+            found = True
+            break
+        
+    if not found:
+        return False
+    else:
+        locker_code = input("Voer de code in: ")
+    combo_found = False
+    for locker in lockers:
+        if locker[0] == input_locker_number and locker[1] == locker_code:
+            combo_found = True
+            break
+    if combo_found:
+        with open('kluizen.txt', 'w') as file:
+            for locker in lockers:
+                if locker[0] != input_locker_number:
+                    file.write(f"{locker[0]};{locker[1]}\n")
+        return True
 
     
-print(nieuwe_kluis())
+print(kluis_teruggeven())
 
