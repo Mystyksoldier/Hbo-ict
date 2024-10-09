@@ -1,0 +1,44 @@
+drop database `Albert Heijn`;
+
+create database `Albert Heijn`;
+
+create table `bonuskaart` (
+	bonuskaartnummer INT primary KEY,
+    naam varchar(255),
+    adres varchar(255),
+    woonplaats varchar(255)
+);
+
+create table filiaal (
+	filiaalnummer int primary key,
+    plaats varchar(255),
+    adres varchar(255)
+);
+
+create table product (
+	productnummer int primary key,
+    omschrijving varchar(255),
+    prijs decimal(6, 2)
+);
+
+create table transactie (
+	transactienummer int primary key,
+    datum date,
+    tijd time,
+    bonuskaartnummer int,
+    filiaalnummer int
+);
+
+create table aankoop (
+    transactienummer int,
+    product int,
+	aantal int
+);
+
+alter table aankoop
+add FOREIGN KEY (transactienummer) REFERENCES transactie(transactienummer),
+add FOREIGN KEY (product) REFERENCES product(productnummer);
+
+alter table transactie
+add foreign key (bonuskaartnummer) references bonuskaart(bonuskaartnummer),
+add foreign key (filiaalnummer) references filiaal(filiaalnummer);

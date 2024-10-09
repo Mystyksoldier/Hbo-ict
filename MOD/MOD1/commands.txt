@@ -1,0 +1,19 @@
+SELECT DISTINCT f.filiaalnummer, f.adres, f.plaats, t.datum
+FROM transactie t
+JOIN filiaal f ON t.filiaalnummer = f.filiaalnummer
+WHERE t.bonuskaartnummer = 65472335;
+
+SELECT SUM(p.prijs * a.aantal) AS totaalbedrag
+FROM transactie t
+JOIN aankoop a ON t.transactienummer = a.transactienummer
+JOIN product p ON a.product = p.productnummer
+WHERE t.bonuskaartnummer = 65472335;
+
+SELECT SUM(a.aantal) AS aantal_verkocht
+FROM transactie t
+JOIN aankoop a ON t.transactienummer = a.transactienummer
+JOIN product p ON a.product = p.productnummer
+JOIN filiaal f ON t.filiaalnummer = f.filiaalnummer
+WHERE p.omschrijving = 'pak AH halfvolle melk'
+  AND t.datum BETWEEN '2019-12-01' AND '2019-12-31'
+  AND f.plaats = 'Utrecht';
