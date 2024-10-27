@@ -1,12 +1,14 @@
 from machine import Pin
 import time
 
-led_pin = Pin(20, Pin.OUT)
+led_pins = [Pin(0, Pin.OUT), Pin(1, Pin.OUT), Pin(2, Pin.OUT), Pin(3, Pin.OUT)]
 switch_pin = Pin(19, Pin.IN, pull=Pin.PULL_DOWN)
 
 while True:
     if switch_pin.value():
-        led_pin.value(1)
-    else:
-        led_pin.value(0)
-    time.sleep(0.1)
+        for led in led_pins:
+            led.value(1)
+    
+    if switch_pin.value():
+        for led in led_pins:
+            led.value(0)
