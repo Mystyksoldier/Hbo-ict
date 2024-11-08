@@ -187,7 +187,13 @@ def sqrt_heron(n, tolerantie = 0.00000001):
         float: De benaderde vierkantswortel
 
     """
-    return 0
+    resultaat = n
+    
+    # Blijf in een loop totdat het verschil tussen het resultaat en n kleiner is dan de tolerantie
+    while abs(resultaat**2 - n) > tolerantie:
+        resultaat = (resultaat + n / resultaat) / 2
+    
+    return resultaat
 
 
 """
