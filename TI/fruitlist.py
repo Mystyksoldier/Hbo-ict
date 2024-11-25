@@ -43,6 +43,8 @@ def CalculateACDPResentage():
 
 def Show():
     number = int(CalculateACDPResentage())
+    if number != int(CalculateACDPResentage()):
+        lcd.clear()
     lcd.move_to(0, 0)
     lcd.putstr(fruits[int(number)][0])
     lcd.move_to(0, 1)
