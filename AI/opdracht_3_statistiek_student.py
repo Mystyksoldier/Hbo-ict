@@ -64,7 +64,7 @@ def mean(lst):
     Returns:
         float: Het gemiddelde van de gegeven getallen.
     """
-    return sum(lst) / len(lst) if lst else 0
+    return sum(lst) / len(lst)
 
 """
 4. Implementatie q1
