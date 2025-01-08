@@ -157,10 +157,19 @@ def dec2bin(n):
         >> dec2bin(16)
         (1, 0, 0, 0, 0)
     """
-    binary_str = bin(n)[2:]
-    #[2:] is om de prefix '0b' te verwijderen
-    return tuple(int(bit) for bit in binary_str)
 
+    if n == 0:
+        return tuple([0])
+    
+    binaire_numer = ""
+    
+    while n > 0:
+        rest = n % 2
+        binaire_numer = str(rest) + binaire_numer
+        n = n // 2
+
+    return tuple(int(bit) for bit in binaire_numer)
+    
 
 """
 7. Implementatie sqrt_heron
